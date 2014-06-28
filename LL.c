@@ -11,8 +11,8 @@ typedef struct node
 struct node *insert_a (struct node *l, int data))
 {
     struct node *tmp = (struct node*)malloc(sizeof(struct node));
-    tmp->data=data;
-    tmp->next=l
+    tmp->data = data;
+    tmp->next = l;
     return tmp;
 }
 
@@ -31,7 +31,7 @@ struct node *insert_z (struct node *l, int data))
         tmp = tmp->next;
 
     tmp->next = (struct node*)malloc(sizeof(struct node));
-    tmp->next->data=data;
+    tmp->next->data = data;
     tmp->next->next = NULL;
 
     return l;
@@ -69,15 +69,92 @@ struct node *reverseNode (struct node* s)
         first = currNode;
         currNode = nextNode;
     }
+    return first;
+}
+
+/*AT THE END ADD THE SAME NODE*/
+struct node *sameNode (struct node* s)
+{
+    struct node* first = NULL;
+    if(s == NULL)
+        return s;
+
+    struct node* currNode = first;
+    struct node* nextNode;
+    struct node* currNodeF;
+    struct node* nextNodeF;
+    
+    while(currNode->next != NULL)
+    {
+        nextNode = currNode->next;
+        currNode->next = NULL;
+        
+        currNodeF = first;
+        
+        while(currNodeF != NULL)
+               currNodeF = currNodeF->next;
+               
+        currNodeF = currNode; //first element
+        currNodeF->next = currNode; //dubled element
+        currNodeF->next->next = NULL;
+        
+        currNode = nextNode;
+    }   
+    currNode->next = first; // a tle nastane cikel??? al je oki
+    
+    return first;
+}
+
+
+/*DUPLICATE NODE*/
+struct node *duplicateNode (struct node* s)
+{
+    struct node* first = s;
+    if(s == NULL)
+        return s;
+
+    struct node* currNode = first;
+    struct node* nextNode;
+    
+    while(currNode->next != NULL)
+        currNode = currNode->next;
+        
+    currNode->next = first; // a tle nastane cikel??? al je oki
+    
+    return first;
+}
+
+/*DELETE EVERY SECOND NODE*/
+struct node *duplicateNode (struct node* s)
+{
+    if(s == NULL)
+        return s;
+
+    struct node* currNode = s;
+    struct node* nextNode;
+    
+    int i = 0;
+    
+    while(currNode->next != NULL)
+    {
+        if(i % 2 == 1)
+        {
+            nextNode = currNode->next;
+            currNode->next = NULL;
+            free(currNode);
+            currNode = nextNode;
+        }
+        
+        else
+            currNode = currNode->next;
+    }
+    
     return s;
 }
 
 
-
-
-
 int main()
 {
-    
+    //neki da se kej napiše pa to
     return 0;
 }
