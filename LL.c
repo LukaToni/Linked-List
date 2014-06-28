@@ -14,7 +14,7 @@ struct node *insert_a (struct node *l, int data))
     tmp->data=data;
     tmp->next=l
     return tmp;
-};
+}
 
 /*INESET AT THE END*/
 struct node *insert_z (struct node *l, int data))
@@ -35,7 +35,7 @@ struct node *insert_z (struct node *l, int data))
     tmp->next->next = NULL;
 
     return l;
-};
+}
 
 /*DELETE NODE*/
 struct node *deleteNode (struct node* s)
