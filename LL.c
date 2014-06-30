@@ -120,7 +120,7 @@ struct node *duplicateNode (struct node* s)
         currNode = currNode->next;
         
     currNode->next = first; // a tle nastane cikel??? al je oki
-    
+    //nastane cikel
     return first;
 }
 
